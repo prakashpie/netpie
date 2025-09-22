@@ -3,41 +3,36 @@
   "version": "1.0.0",
   "description": "Netpie application with backend API",
   "private": true,
-  "workspaces": [
-    "services/*",
-    "apps/*"
-  ],
+  "packageManager": "npm@11.5.2",
   "scripts": {
-    "dev": "npm run dev -w @netpie/express-api",
-    "dev:client": "npm run dev -w @netpie/react-app",
-    "dev:backend": "npm run dev -w @netpie/express-api",
-    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:client\" --names \"backend,client\" --prefix-colors \"blue,green\"",
-    "build:all": "npm run build -ws",
-    "build:server": "npm run build -w @netpie/express-api",
-    "build:client": "npm run build -w @netpie/react-app",
-    "start": "npm start -w @netpie/express-api",
-    "test": "npm test -ws",
-    "test:watch": "npm run test:watch -w @netpie/express-api",
-    "test:coverage": "npm run test:coverage -w @netpie/express-api",
-    "test:client": "npm test -w @netpie/react-app",
-    "test:client:watch": "npm run test:watch -w @netpie/react-app",
-    "test:client:coverage": "npm run test:coverage -w @netpie/react-app",
-    "lint": "npm run lint -ws",
-    "lint:server": "npm run lint -w @netpie/express-api",
-    "lint:client": "npm run lint -w @netpie/react-app",
-    "format": "npm run format -w @netpie/express-api",
-    "docker:build": "npm run docker:build -w @netpie/express-api",
+    "dev:client": "cd apps/netpie-react-app && npm run dev",
+    "dev:server": "cd services/netpie-express-api && npm run dev",
+    "dev:all": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "build:server": "cd services/netpie-express-api && npm run build",
+    "build:client": "cd apps/netpie-react-app && npm run build",
+    "start": "cd services/netpie-express-api && npm start",
+    "test:watch": "cd services/netpie-express-api && npm run test:watch",
+    "test:coverage": "cd services/netpie-express-api && npm run test:coverage",
+    "test:client": "cd apps/netpie-react-app && npm test",
+    "test:client:watch": "cd apps/netpie-react-app && npm run test:watch",
+    "test:client:coverage": "cd apps/netpie-react-app && npm run test:coverage",
+    "lint:server": "cd services/netpie-express-api && npm run lint",
+    "lint:client": "cd apps/netpie-react-app && npm run lint",
+    "format": "cd services/netpie-express-api && npm run format",
+    "docker:build": "cd services/netpie-express-api && npm run docker:build",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "docker:logs": "docker-compose logs -f",
-    "db:start": "npm run db:start -w @netpie/express-api",
-    "db:stop": "npm run db:stop -w @netpie/express-api",
-    "install:all": "npm install -ws",
-    "setup": "npm install -ws"
+    "db:start": "cd services/netpie-express-api && npm run db:start",
+    "db:stop": "cd services/netpie-express-api && npm run db:stop",
+    "install:server": "cd services/netpie-express-api && npm install",
+    "install:client": "cd apps/netpie-react-app && npm install",
+    "install:all": "concurrently \"npm run install:server\" \"npm run install:client\" --names \"server,client\" --prefix-colors \"blue,green\"",
+    "setup": "npm run install:server && npm run install:client"
   },
   "keywords": [
     "todo",
-    "backend",
+    "server",
     "nodejs",
     "typescript",
     "monorepo"
@@ -45,10 +40,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.2",
-    "concurrently": "^9.2.0",
-    "eslint": "^9.35.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "concurrently": "^9.2.0"
+  },
+  "dependencies": {
+    "sass": "^1.93.0"
   }
 }
