@@ -1,19 +1,16 @@
-import React from 'react';
-import { Metadata } from 'next';
+'use client';
+
+import React, { useEffect } from 'react';
 import Dashboard from '@/components/dashboard/Dashboard';
+import { worker } from '@/mocks/browser'
 
-const pageTitle = 'Moda - Moda';
-export const metadata: Metadata = {
-    title: pageTitle,
-    openGraph: {
-        title: pageTitle,
-    },
-    twitter: {
-        title: pageTitle,
-    },
-};
+const HomePage: React.FC = () => {
+    useEffect(() => {
+        if (process.env.NODE_ENV === 'development') {
+            worker.start();
+        }
+    }, []);
 
-const HomePage: React.FC = async () => {
     return (
         <Dashboard />
     );

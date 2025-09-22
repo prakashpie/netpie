@@ -7,7 +7,6 @@ export interface Asset {
 
 export interface BankAccountAsset extends Asset {
   type: 'bank';
-  manualValue: number; // Manually entered value for bank accounts
 }
 
 export interface StockAsset extends Asset {
@@ -26,10 +25,33 @@ export interface FixedDepositAsset extends Asset {
   type: 'fixed_deposit';
   principalAmount: number;
   maturityValue: number;
-  // maturityDate: Date; // Optional: could add more details
 }
 
 export interface OtherAsset extends Asset {
   type: 'other';
   description?: string;
 }
+
+export type AnyAsset = BankAccountAsset | StockAsset | MutualFundAsset | FixedDepositAsset | OtherAsset;
+
+export interface Liability {
+    id: string;
+    name: string;
+    type: 'personal_loan' | 'credit_card' | 'other';
+    amount: number;
+}
+
+export interface PersonalLoanLiability extends Liability {
+    type: 'personal_loan';
+    principalAmount: number;
+}
+
+export interface CreditCardLiability extends Liability {
+    type: 'credit_card';
+}
+
+export interface OtherLiability extends Liability {
+    type: 'other';
+}
+
+export type AnyLiability = PersonalLoanLiability | CreditCardLiability | OtherLiability;
