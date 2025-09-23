@@ -36,6 +36,7 @@ const Dashboard = () => {
       ];
       const initialLiabilities: Liability[] = [
         { id: '1', name: 'Personal Loan', type: 'personal_loan', amount: 20000, principalAmount: 25000 },
+        { id: '1', name: 'Home Loan', type: 'home_loan', amount: 8000000, principalAmount: 8000000 },
         { id: '2', name: 'Credit Card', type: 'credit_card', amount: 5000 },
       ];
 

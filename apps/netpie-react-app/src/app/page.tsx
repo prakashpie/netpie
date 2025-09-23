@@ -2,13 +2,18 @@
 
 import React, { useEffect } from 'react';
 import Dashboard from '@/components/dashboard/Dashboard';
-import { worker } from '@/mocks/browser'
+
+const isDevelopment = process.env.NODE_ENV === 'development' || true;
 
 const HomePage: React.FC = () => {
     useEffect(() => {
-        if (process.env.NODE_ENV === 'development') {
-            worker.start();
+        async function initMocks() {
+            if (isDevelopment) {
+                const { worker } = await import('@/mocks/browser');
+                await worker.start();
+            }
         }
+        initMocks()
     }, []);
 
     return (

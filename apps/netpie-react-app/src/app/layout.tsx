@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 import { ThemeProvider } from "@/context/ThemeContext";
-import '../styles/globals.scss'
+import '../styles/globals.scss';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 
 const metaTitle = 'Moda';
 const metaDescription =
@@ -37,7 +39,9 @@ const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
         <html lang="en">
         <body>
         <ThemeProvider>
-            <main className="App">{children}</main>
+            <Header />
+            <main className="App pt-24">{children}</main>
+            <Footer />
         </ThemeProvider>
         </body>
         </html>
