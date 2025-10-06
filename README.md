@@ -3,6 +3,7 @@
 A modern todo application with a Node.js TypeScript backend and React TypeScript frontend.
 
 ## Project Structure
+https://media.licdn.com/dms/image/v2/D5603AQFD8g-9W_wwZA/profile-displayphoto-crop_800_800/B56ZlcjBGmKAAI-/0/1758194308243?e=1762387200&v=beta&t=Nnwtu9g738S1AQZEkNqfG4w0zDy9pnXG2heahAAiMY0
 
 This project is organized as a monorepo with separate frontend and backend applications:
 
